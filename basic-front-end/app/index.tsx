@@ -1,15 +1,17 @@
-import { Text, View } from "react-native";
+import Login from "@/src/components/Auth/Login/Login";
+import Register from "@/src/components/Auth/Register";
+import { useState } from "react";
 
 export default function AuthScreen() {
-    return (
-        <View
-            style={{
-                flex: 1,
-                justifyContent: "center",
-                alignItems: "center",
-            }}
-        >
-            <Text>Index</Text>
-        </View>
-    );
+  const [isRegistered, setIsRegistered] = useState<boolean>(false);
+
+  return (
+    <>
+      {!isRegistered ? (
+        <Login setIsRegistered={setIsRegistered} />
+      ) : (
+        <Register setIsRegistered={setIsRegistered} />
+      )}
+    </>
+  );
 }
